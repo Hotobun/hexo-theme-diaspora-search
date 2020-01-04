@@ -38,9 +38,8 @@ type: "search"
 ---
 ```
 
-`themes/diaspora/layout/`文件夹下创建`search.ejs`
-
-代码整合到一个页面了 也不多 就没有做分开模块做css、js (懒)
+`themes/diaspora/layout/`文件夹下创建`search.ejs` 
+编辑`diaspora.js`末尾增加函数
 
 最后主题的_config.yml文件修改 menu
 
@@ -52,3 +51,53 @@ menu:
   归档: /archives 
   搜索: /search
 ```
+
+<details>
+  <summary> diaspora.js 文件末尾添加 </summary>
+
+``` js
+function get_posts(text){
+    var posts = document.getElementsByClassName('timeline-item');
+    // console.log(posts.length);
+    if (text == ""){
+        all_none(posts);
+        return ;
+    }
+    var count = 0;
+    for (var i = 0;i<posts.length; ++i){
+        var temp = posts[i].id.toLowerCase();
+        if ( temp.search(text) != -1 ){
+            posts[i].style = "display: block";
+            count += 1;
+            // console.log(posts[i].id);
+        } else {
+            posts[i].style = "display: none";
+        }
+    }
+    if (count > 0){
+        var search_count = document.getElementById('search_count');
+        search_count.style = "display: block";
+        search_count.innerHTML = "为你献上"+count+ "篇"
+    } else {
+        document.getElementById('search_count').style = "display: none";
+    }
+}
+function all_none(posts){
+    for (let i = 0;i<posts.length; ++i){
+        document.getElementById('search_count').style = "display: none";
+        posts[i].style = "display: none";
+    }
+}
+function button_search_onkeypress(){
+    var text = document.getElementById("search").value.toLowerCase();
+    // console.log("读取到的文本:"+ text );
+    get_posts(text);
+}
+function text_button_search_onkeypress(){
+    var text = document.getElementById("search").value.toLowerCase();
+    var p = document.getElementById("search_test");
+    p.innerHTML = text;
+}
+```
+
+</details>  
