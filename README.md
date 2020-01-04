@@ -1,4 +1,4 @@
-#### 在线预览|[demo](https://hotococoa.com/search)
+#### [预览demo](https://hotococoa.com/search)
 
 ### 原理  
 搜索页面先把所有文章标题都列举出来   
