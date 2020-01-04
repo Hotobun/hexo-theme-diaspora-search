@@ -38,8 +38,8 @@ type: "search"
 ---
 ```
 
-`themes/diaspora/layout/`文件夹下创建`search.ejs` 
-编辑`diaspora.js`末尾增加函数
+`themes/diaspora/layout/`文件夹下创建`search.ejs`       
+编辑`diaspora.js`末尾增加函数     
 
 最后主题的_config.yml文件修改 menu
 
@@ -92,12 +92,7 @@ function button_search_onkeypress(){
     var text = document.getElementById("search").value.toLowerCase();
     // console.log("读取到的文本:"+ text );
     get_posts(text);
-}
-function text_button_search_onkeypress(){
-    var text = document.getElementById("search").value.toLowerCase();
-    var p = document.getElementById("search_test");
-    p.innerHTML = text;
-}
+} 
 ```
 
 </details>  
